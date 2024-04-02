@@ -1,4 +1,4 @@
-For optimal execution, please use Google collab.
+For optimal execution, please use Google colab.
 
 - The notebook can be run out of the box, as it connects to our GitHub repo and downloads the necessary data from there.
 - In particular, the first notebook cell is responsible for the imports and cloning of the repo
