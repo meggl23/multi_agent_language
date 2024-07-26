@@ -5,7 +5,7 @@ This jupyter notebook connects to our GitHub repo and downloads the necessary da
 - `unzip data.zip`
 
 Now, at the bottom of the first cell specify the location of the newly created data folder
-- `"/home/.../multi_agent_language/data"`
+- `"/home/.../multi_agent_language/data/"`
 The notebook is now ready to run! For any figure that you want to create, always execute the first 19 notebook cells before executing a "PLOT" cell. After cell 1 has been successfully executed once, you can uncomment the second line to skip the imports.
 
 The following guidelines show how to generate each of the plots in order of their appearance in the paper
