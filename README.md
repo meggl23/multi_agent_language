@@ -1,12 +1,12 @@
 - This jupyter notebook connects to our GitHub repo and downloads the necessary data from there.
 - Before running it please make sure to install the requirements into your environment and load the data as follows:
-  pip install -r requirements.txt
-  git clone https://github.com/meggl23/multi_agent_language.git --branch v3.0
-  cd multi_agent_language
-  unzip data.zip
+- pip install -r requirements.txt
+- git clone https://github.com/meggl23/multi_agent_language.git --branch v3.0
+- cd multi_agent_language
+- unzip data.zip
 
 - Now at the bottom of the first cell specify the location of the newly created data folder
-    e.g. "/home/.../multi_agent_language/data"
+- e.g. "/home/.../multi_agent_language/data"
 - The notebook is now ready to run!
 
 - For any figure that you want to create, ALWAYS execute the first 19 notebook cells before executing a "PLOT" cell
