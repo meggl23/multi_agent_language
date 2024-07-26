@@ -1,7 +1,13 @@
-For optimal execution, please use Google colab.
+- This jupyter notebook connects to our GitHub repo and downloads the necessary data from there.
+- Before running it please make sure to install the requirements into your environment and load the data as follows:
+  pip install -r requirements.txt
+  git clone https://github.com/meggl23/multi_agent_language.git --branch v3.0
+  cd multi_agent_language
+  unzip data.zip
 
-- The notebook can be run out of the box, as it connects to our GitHub repo and downloads the necessary data from there.
-- In particular, the first notebook cell is responsible for the imports and cloning of the repo
+- Now at the bottom of the first cell specify the location of the newly created data folder
+    e.g. "/home/.../multi_agent_language/data"
+- The notebook is now ready to run!
 
 - For any figure that you want to create, ALWAYS execute the first 19 notebook cells before executing a "PLOT" cell
 - After this has been done once, uncomment the second line in cell 1 --> this will save time in subsequent runs, as the imports are skipped this way
