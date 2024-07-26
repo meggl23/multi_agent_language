@@ -41,7 +41,7 @@ Figs. 4e-h:
 - execute cell 22
 
 Figs. 5a, S7:
-- in cell 2, set language_code_closingloop="nonlinear_goallocs0_zeta5_language0"
+- in cell 2, set language_codes_closingloop=["nonlinear_goallocs0_zeta5_language0"]
 - execute the first 19 cells
 - execute cell 23
 
