@@ -9,12 +9,12 @@ The notebook is now ready to run! For any figure that you want to create, always
 
 The following guidelines show how to generate each of the plots in order of their appearance in the paper
 
-Figs. 2a, S9a, S10a, S11a, S12a:
+Figs. 2a, S5a, S6a, S7a, S8a:
 - in cell 2, set language_code="nonlinear_nostudent_language0" 
 - execute the first 19 cells
 - execute cell 20
 
-Figs. 2b,c, S9b,c, S10b,c, S11b,c, S12b,c:
+Figs. 2b,c, S5b,c, S6b,c, S7b,c, S8b,c:
 - in cell 2, set language_code="nonlinear_goallocs0_zeta5_language2"
 - execute the first 19 cells
 - execute cell 20
@@ -39,7 +39,7 @@ Figs. 4e-h:
 - execute the first 19 cells
 - execute cell 22
 
-Figs. 5a, S7:
+Figs. 5a, S10:
 - in cell 2, set language_codes_closingloop=["nonlinear_goallocs0_zeta5_language0"]
 - execute the first 19 cells
 - execute cell 23
@@ -67,34 +67,34 @@ Figs. S2:
 - execute cell 20
 
 Figs. S3:
-- in cell 2, set folders_goalloc_plots=[f"studentQfeedback_goallocs{i}_zeta5_factor1" for i in range(7)]
-- in cell 2, set language_nr_goalloc_plots=25
-- in cell 2, set chuck_out=False
-- execute the first 19 cells
-- execute cell 22
-
-Figs. S4:
 - in cell 2, set folders_goalloc_plots=[f"nonlinear_frozen_goallocs{i}_zeta5_factor1" for i in range(7)]
 - in cell 2, set language_nr_goalloc_plots=5
 - in cell 2, set chuck_out=False
 - execute the first 19 cells
 - execute cell 22
 
-Figs. S5:
+Figs. S4:
 - in cell 2, set folders_goalloc_plots=[f"nonlinear_frozen2_goallocs{i}_zeta5_factor1" for i in range(7)]
 - in cell 2, set language_nr_goalloc_plots=5
 - in cell 2, set chuck_out=False
 - execute the first 19 cells
 - execute cell 22
 
-Figs. S6:
+Figs. S11:
 - in cell 2, set zeta_lossplot=1 (a), 2 (b), 5 (c), 10 (d)
 - execute the first 19 cells
 - execute cell 21
 
-Figs. S8:
+Figs. S12:
 - execute the first 19 cells
 - execute cells 28 and 29
+
+Figs. S13:
+- in cell 2, set folders_goalloc_plots=[f"studentQfeedback_goallocs{i}_zeta5_factor1" for i in range(7)]
+- in cell 2, set language_nr_goalloc_plots=25
+- in cell 2, set chuck_out=False
+- execute the first 19 cells
+- execute cell 22
 
 
 
