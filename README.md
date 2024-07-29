@@ -129,7 +129,7 @@ How to evaluate student performances of a trained language:
 - in cell 3, set student_evaluate=True (and set save_rates=True if the solving rates should be saved)
 - in cell 2, set qmat_read_code="training4x4" if you are interested in training matrices and set qmat_read_code="test4x4" if you are interested in test messages
 - execute the first 18 cells
-- in cell 19, also replace "test_language" with your language name (NOT including the tag!) and set  language_nr_evaluation to the number of languages you trained with identical parameters and names, but different seeds
+- in cell 19, set language_codes=[your_language_name] (NOT including tags like "_language0"!) and set language_nr_evaluation to the number of languages you trained with identical parameters and names, but different seeds
 - execute cell 19
 - afterwards, set student_evaluate=False again
 
@@ -137,7 +137,7 @@ How to evaluate student performances of a trained language:
 
 How to get the student messages for closing the loop:
 
-- in cell 2, set language_code_closingloop=[your_language_name]
+- in cell 2, set language_codes_closingloop=[your_language_names]
 - in cell 2, set qmat_read_code="training4x4" if you are interested in training matrices and set qmat_read_code="test4x4" if you are interested in test messages
 - execute the first 19 cells
 - execute cell 23 --> the student Q-matrices are generated and saved under "/closing the loop/[your_language_name]/studentQmatrices.pkl
