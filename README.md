@@ -81,8 +81,8 @@ Figs. S4:
 - execute cell 22
 
 Figs. S9:
-- 
-
+- execute the first 19 cells
+- execute cell 30
 
 Figs. S11:
 - in cell 2, set zeta_lossplot=1 (a), 2 (b), 5 (c), 10 (d)
