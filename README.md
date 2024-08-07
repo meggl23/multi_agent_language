@@ -1,5 +1,5 @@
 This jupyter notebook connects to our GitHub repo and downloads the necessary data from there. Before running it please make sure to install the requirements into your environment and load the data as follows:
-- `git clone https://github.com/meggl23/multi_agent_language --branch v3.0`
+- `git clone https://github.com/meggl23/multi_agent_language --branch v4.0`
 - `cd multi_agent_language`
 - `unzip data.zip`
 
@@ -182,7 +182,6 @@ The following are all language codes of languages that can be analyzed:
 
 #regularization loss set to zero (entropy analysis)
 - nonlinear_noregularization_language{x} x=0,1,2,3,4
-
 
 
 
