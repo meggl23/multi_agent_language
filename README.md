@@ -3,6 +3,19 @@ This jupyter notebook connects to our GitHub repo and downloads the necessary da
 - `cd multi_agent_language`
 - `unzip data.zip`
 
+Requirements:
+```
+ipywidgets==8.1.3
+matplotlib==3.9.1
+networkx==3.3
+numpy==1.26.4
+pycolormap-2d==1.0.10
+scikit_learn==1.5.1
+scipy==1.14.0
+torch==2.4.0
+tqdm==4.66.4
+umap-learn==0.5.6
+```
 Now, at the bottom of the first cell specify the location of the newly created data folder
 - `"/your/working/dir/.../multi_agent_language/data/"`
 The notebook is now ready to run! For any figure that you want to create, always execute the first 19 notebook cells before executing a "PLOT" cell. After cell 1 has been successfully executed once, you can uncomment the second line to skip the imports.
