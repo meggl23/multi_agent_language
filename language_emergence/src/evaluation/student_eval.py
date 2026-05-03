@@ -9,6 +9,7 @@ import torch.nn as nn
 from src.env.gridworld import SquareGridworld, state_int_to_tuple
 from src.models.dqn import DQN
 from src.utils.graph_utils import graph_from_walls
+from src.rl.teacher import q_matrix_from_network
 
 def train_student(label_dict, wall_state_dict, sopt_dict, message_dict, config, device,
                   num_eps=750, max_steps=50, alpha=16.0):
@@ -305,6 +306,58 @@ def run_evaluations(student, label_dict, wall_state_dict, message_dict, sopt_dic
     print(f"Misinformed student: {100*sum(misinformed_rates)/len(misinformed_rates):.2f}%")
     
     return informed_rates, misinformed_rates
+
+def extract_student_messages(student, autoencoder, label_dict, wall_state_dict, message_dict, config, device):
+    '''
+    For each task, extract the student's implied Q-matrix by forward-passing all states
+    through the student DQN (given the task's teacher message), then re-encode that
+    Q-matrix through the frozen SAE to produce a new message.
+
+    Returns student_message_dict with the same key structure as message_dict:
+        {(wall_index, init_state, goal_state): message_tensor of shape (K,)}
+    '''
+    student.eval()
+    autoencoder.eval()
+    student_message_dict = {}
+
+    with torch.no_grad():
+        for task, (wall_index, init_state, goal_state) in label_dict.items():
+            wall_states = wall_state_dict[wall_index]
+            message = message_dict[(wall_index, init_state, goal_state)].to(device)
+
+            # Reuse the generic extractor from teacher.py: forward-passes all states
+            # through `student` with the given message, returns (n_actions, grid_dim, grid_dim)
+            q_student = q_matrix_from_network(student, message, wall_states, config, device)
+
+            # Re-encode through the frozen SAE
+            q_student_batch = q_student.unsqueeze(0).to(device)  # (1, n_actions, grid_dim, grid_dim)
+            new_message, _ = autoencoder(q_student_batch)         # (1, K)
+            student_message_dict[(wall_index, init_state, goal_state)] = new_message.squeeze(0).detach()
+
+    return student_message_dict
+
+
+def close_the_loop(student, autoencoder, label_dict, wall_state_dict,
+                   message_dict, sopt_dict, config, device, num_eps=750):
+    '''
+    The telephone game: encode the student's learned policy back through the frozen SAE
+    to produce degraded messages, then train a 2nd-generation student on those messages.
+
+    Returns (student_gen2, student_message_dict) where student_message_dict holds the
+    re-encoded messages that student_gen2 was trained on.
+    '''
+    print("--- Closing the Loop: extracting student messages ---")
+    student_message_dict = extract_student_messages(
+        student, autoencoder, label_dict, wall_state_dict, message_dict, config, device
+    )
+
+    print("--- Closing the Loop: training 2nd-generation student ---")
+    student_gen2 = train_student(
+        label_dict, wall_state_dict, sopt_dict, student_message_dict, config, device, num_eps=num_eps
+    )
+
+    return student_gen2, student_message_dict
+
 
 #######################################  HELPER FUNCTIONS  ##########################################
 
